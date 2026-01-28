@@ -58,3 +58,68 @@ Each residual block typically follows this flow:
 ### Prerequisites
 * Google Colab (recommended for GPU access) or a local Python environment.
 * **Dataset:** `4class_32x32.npz` (Ensure this is placed in the correct directory).
+
+### Installation
+
+```bash
+# Clone the repository
+git clone [https://github.com/hoanglechau/channelwise-attention-residual-networks-dl.git](https://github.com/hoanglechau/channelwise-attention-residual-networks-dl.git)
+
+# Install dependencies
+pip install tensorflow numpy matplotlib pandas seaborn scikit-learn
+
+```
+
+### Usage
+
+1. Open `notebook.ipynb` in Jupyter or Google Colab.
+2. **Mount Drive:** If using Colab, ensure your Google Drive is mounted to access the dataset.
+3. **Configure Paths:**
+Update the constants in the second cell to point to your data location:
+```python
+DRIVE_FOLDER = "/content/drive/MyDrive/Your/Path/Here/"
+
+```
+
+
+4. Run all cells to preprocess data, train the model, and evaluate results.
+
+---
+
+## 🧪 Training Strategy
+
+* **Optimizer:** AdamW (Adaptive Moment Estimation with Weight Decay) for efficient convergence.
+* **Loss Function:** Sparse Categorical Crossentropy.
+* **Regularization:**
+* *Dropout ():* To simulate ensemble learning and prevent co-adaptation of neurons.
+* *Batch Normalization:* To stabilize internal covariate shift.
+* *Stratified Splitting:* Ensures the marginal distribution of classes  remains consistent across Train, Validation, and Test sets.
+
+
+
+---
+
+## 📊 Results
+
+> *Note: Refer to the notebook for detailed training dynamics and visualizations.*
+
+* **Class Balance:** The EDA confirms a balanced distribution across all 4 classes, preventing majority-class bias.
+* **Evaluation:** The model is evaluated on a held-out test set (). Key metrics include Accuracy and the Confusion Matrix to visualize inter-class ambiguities.
+
+| Metric | Score |
+| --- | --- |
+| **Training Accuracy** | *[Insert from notebook]* |
+| **Validation Accuracy** | *[Insert from notebook]* |
+| **Test Accuracy** | *[Insert from notebook]* |
+
+---
+
+## 📚 References
+
+This project is grounded in the following academic literature:
+
+1. **Chollet, F.** (2021). *Deep Learning with Python* (2nd ed.). Manning Publications.
+2. **Goodfellow, I., Bengio, Y., & Courville, A.** (2016). *Deep Learning*. MIT Press.
+3. **He, K., et al.** (2016). Deep residual learning for image recognition. *CVPR*.
+4. **Hu, J., Shen, L., & Sun, G.** (2018). Squeeze-and-excitation networks. *CVPR*.
+5. **Géron, A.** (2022). *Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow*. O'Reilly Media.
